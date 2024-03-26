@@ -17,9 +17,9 @@ public class SinhVienServiceImpl implements SinhVienService {
 
 	static List<SinhVien> dsSinhVien=  new ArrayList<SinhVien>();
 	static {
-					dsSinhVien.add(new SinhVien("0001", "Ngô THanh Đạt","Công nghệ thông tin","Đại học Nha Trang"));
-					dsSinhVien.add(new SinhVien("0002", "Nguyễn Trọng Trí","Công nghệ thông ti","Đại học Nha Trang"));
-					dsSinhVien.add(new SinhVien("0003", "Dương Nhaasrt Duy","Công nghệ thông ti","Đại học Nha Trang"));
+					dsSinhVien.add(new SinhVien("0001", "Ngô THanh Đạt","85"));
+					dsSinhVien.add(new SinhVien("0002", "Nguyễn Trọng Trí","81"));
+					dsSinhVien.add(new SinhVien("0003", "Dương Nhaasrt Duy","75"));
 	}
 
 	@Override

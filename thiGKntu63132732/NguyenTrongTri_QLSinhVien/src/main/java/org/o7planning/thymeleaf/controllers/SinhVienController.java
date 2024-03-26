@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.o7planning.thymeleaf.form.SinhVienForm;
 import org.o7planning.thymeleaf.models.SinhVien;
 import org.o7planning.thymeleaf.services.SinhVienService;
 @Controller
@@ -28,6 +28,14 @@ public class SinhVienController {
 		public String index(Model model) {
 
 			return "index";
+		}
+	 @RequestMapping(value = { "/addSinhVien" }, method = RequestMethod.GET)
+		public String showAddPersonPage(Model model) {
+
+			SinhVienForm sinhvienForm = new SinhVienForm();
+			model.addAttribute("sinhvienForm", sinhvienForm);
+
+			return "ThemSinhVien";
 		}
 	@GetMapping("/danhsachSV")
 	public String listStudent(Model model,  

@@ -3,8 +3,7 @@ package org.o7planning.thymeleaf.models;
 public class SinhVien {
 	private String maSoSV;
 	private String hoVaTen;
-	private String khoa;
-	private String truong;
+	private String diem;
 	public String getMaSoSV() {
 		return maSoSV;
 	}
@@ -17,22 +16,16 @@ public class SinhVien {
 	public void setHoVaTen(String hoVaTen) {
 		this.hoVaTen = hoVaTen;
 	}
-	public String getKhoa() {
-		return khoa;
+	public String getDiem() {
+		return diem;
 	}
-	public void seKhoa(String khoa) {
-		this.khoa = khoa;
+	public void seKhoa(String diem) {
+		this.diem = diem;
 	}
-	public String getTruong() {
-		return truong;
-	}
-	public void setTruong(String truong) {
-		this.truong = truong;
-	}
-	public SinhVien(String maSoSV, String hoVaTen, String khoa, String truong) {
+
+	public SinhVien(String maSoSV, String hoVaTen, String diem) {
 		this.maSoSV = maSoSV;
 		this.hoVaTen = hoVaTen;
-		this.khoa = khoa;
-		this.truong = truong;
+		this.diem = diem;
 	}
 }
