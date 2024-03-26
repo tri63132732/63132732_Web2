@@ -7,11 +7,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.o7planning.thymeleaf.models.SinhVien;
@@ -20,7 +23,12 @@ import org.o7planning.thymeleaf.services.SinhVienService;
 public class SinhVienController {
 	 @Autowired
 	 private SinhVienService svService;
-	 
+
+	 @GetMapping("/")
+		public String index(Model model) {
+
+			return "index";
+		}
 	@GetMapping("/danhsachSV")
 	public String listStudent(Model model,  
 								@RequestParam("page") Optional<Integer> page,
