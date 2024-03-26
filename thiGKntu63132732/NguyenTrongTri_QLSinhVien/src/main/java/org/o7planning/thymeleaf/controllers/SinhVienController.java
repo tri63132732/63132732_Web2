@@ -29,7 +29,7 @@ public class SinhVienController {
 
 			return "index";
 		}
-	 @RequestMapping(value = { "/addSinhVien" }, method = RequestMethod.GET)
+	 @GetMapping("/ThemSinhVien")
 		public String showAddPersonPage(Model model) {
 
 			SinhVienForm sinhvienForm = new SinhVienForm();

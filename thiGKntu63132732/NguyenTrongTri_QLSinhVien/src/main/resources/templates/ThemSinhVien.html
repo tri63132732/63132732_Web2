@@ -5,14 +5,7 @@
       <title>Thêm sinh viên</title>
    </head>
    <body>
-      <h1>Thêm sinh viên mới:</h1>
-      
-      <!--  
-         In Thymeleaf the equivalent of
-         JSP's ${pageContext.request.contextPath}/edit.html
-         would be @{/edit.html}         
-         -->
-         
+      <h1>Thêm sinh viên mới:</h1>       
       <form th:action="@{/addSinhVien}"
          th:object="${personForm}" method="POST">
          MSSV:
@@ -28,13 +21,6 @@
       </form>
       
       <br/>
-      
-      <!-- Check if errorMessage is not null and not empty -->
-      
-      <div th:if="${errorMessage}" th:utext="${errorMessage}"
-         style="color:red;font-style:italic;">
-         ...
-      </div>
-      
+      <a th:href="@{/}">Quay Lại</a>
    </body>
 </html>
