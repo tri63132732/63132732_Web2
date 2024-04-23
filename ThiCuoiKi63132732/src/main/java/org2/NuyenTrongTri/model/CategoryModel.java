@@ -1,12 +1,18 @@
 package org2.NuyenTrongTri.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="Category")
 public class CategoryModel {
+	@Id
     private int categoryID;
     private String categoryName;
 
     // Constructors
 
-    public void Category(int categoryID, String categoryName) {
+    public CategoryModel(int categoryID, String categoryName) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;
     }

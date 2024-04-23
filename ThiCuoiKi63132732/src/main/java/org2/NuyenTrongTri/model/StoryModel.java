@@ -1,6 +1,11 @@
 package org2.NuyenTrongTri.model;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name="Story")
 public class StoryModel {
+	@Id
     private int storyID;
     private String storyName;
     private String storyDescription;
@@ -8,8 +13,7 @@ public class StoryModel {
 
     // Constructors
 
-
-    public void Story(int storyID, String storyName, String storyDescription, String storyComment) {
+    public StoryModel(int storyID, String storyName, String storyDescription, String storyComment) {
         this.storyID = storyID;
         this.storyName = storyName;
         this.storyDescription = storyDescription;

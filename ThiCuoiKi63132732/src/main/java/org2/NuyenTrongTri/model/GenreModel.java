@@ -1,11 +1,17 @@
 package org2.NuyenTrongTri.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="Genre")
 public class GenreModel {
+	@Id
     private int genreID;
     private String genreName;
 
     // Constructors
-    public void Genre(int genreID, String genreName) {
+    public GenreModel(int genreID, String genreName) {
         this.genreID = genreID;
         this.genreName = genreName;
     }

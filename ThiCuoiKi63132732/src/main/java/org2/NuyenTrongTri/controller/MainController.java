@@ -17,7 +17,10 @@ public class MainController {
 	public String sevrice() {
 		return "service.html";
 	}
-	
+	@GetMapping("/login")
+	public String login() {
+		return "login.html";
+	}
 	
 	@GetMapping("/mau")
 	public String mau() {
