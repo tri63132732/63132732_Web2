@@ -10,26 +10,29 @@ import jakarta.persistence.Table;
 public class AuthorModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int authorID;
+    private long authorID;
     private String authorName;
     private String authorAlias;
     private String authorEmail;
     // Constructors
 
-    public AuthorModel(int authorID, String authorName, String authorAlias, String authorEmail) {
-        this.authorID = authorID;
+    public AuthorModel(String authorName, String authorAlias, String authorEmail) {
         this.authorName = authorName;
         this.authorAlias = authorAlias;
         this.authorEmail = authorEmail;
     }
+    
+    public AuthorModel() {
 
-    // Getters and setters
-    public int getAuthorID() {
+	}
+
+	// Getters and setters
+    public long getAuthorID() {
         return authorID;
     }
 
-    public void setAuthorID(int authorID) {
-        this.authorID = authorID;
+    public void setAuthorID(Long id) {
+        this.authorID = id;
     }
 
     public String getAuthorName() {

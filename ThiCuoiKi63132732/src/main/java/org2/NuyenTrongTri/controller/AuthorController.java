@@ -1,61 +1,41 @@
 package org2.NuyenTrongTri.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import org2.NuyenTrongTri.model.AuthorModel;
 import org2.NuyenTrongTri.service.AuthorService;
-import org2.NuyenTrongTri.repositories.AuthorRepository;
+import java.util.List;
 
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
 
     @Autowired
-    private AuthorRepository authorRepository;
+    private AuthorService authorService;
 
-    // Create a new author
-    @PostMapping
-    public AuthorModel createAuthor(@RequestBody AuthorModel author) {
-        return authorRepository.save(author);
-    }
-
-    // Retrieve all authors
-    @GetMapping("/authors")
+    @GetMapping
     public List<AuthorModel> getAllAuthors() {
-        return AuthorService.getAllAuthors();
+        return authorService.getAllAuthors();
     }
 
-    @GetMapping("/authors/{authorId}")
-    public AuthorModel getAuthorById(@PathVariable int authorId) {
-        return AuthorService.getAuthorById(authorId);
+    @GetMapping("/{id}")
+    public AuthorModel getAuthorById(@PathVariable Long id) {
+        return authorService.getAuthorById(id);
     }
 
-    // Update an existing author
+    @PostMapping
+    public AuthorModel addAuthor(@RequestBody AuthorModel author) {
+        return authorService.saveAuthor(author);
+    }
+
     @PutMapping("/{id}")
-    public AuthorModel updateAuthor(@PathVariable int id, @RequestBody AuthorModel updatedAuthor) {
-        return authorRepository.findById(id)
-                .map(author -> {
-                    author.setAuthorName(updatedAuthor.getAuthorName());
-                    author.setAuthorAlias(updatedAuthor.getAuthorAlias());
-                    author.setAuthorEmail(updatedAuthor.getAuthorEmail());
-                    return authorRepository.save(author);
-                })
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+    public AuthorModel updateAuthor(@PathVariable Long id, @RequestBody AuthorModel author) {
+        author.setAuthorID(id);
+        return authorService.saveAuthor(author);
     }
 
-    // Delete an author
     @DeleteMapping("/{id}")
-    public void deleteAuthor(@PathVariable int id) {
-        authorRepository.deleteById(id);
+    public void deleteAuthor(@PathVariable Long id) {
+        authorService.deleteAuthor(id);
     }
 }

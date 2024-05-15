@@ -24,23 +24,10 @@ public class MainController {
 	public String login() {
 		return "login.html";
 	}
-		
-	@GetMapping("/authorIndex")
-	public String authorIndex() {
-		return "authorIndex.html";
-	}
-	@GetMapping("/authorCreate")
-	public String authorCreate() {
-		return "authorCreate.html";
-	}
-	@GetMapping("/authorEdit")
-	public String authorEdit() {
-		return "authorEdit.html";
-	}
-	@GetMapping("/authorDelete")
-	public String authorDelete() {
-		return "authorDelete.html";
-	}
+	@GetMapping("/authors")
+	public String author() {
+		return "indexAuthor.html";
+	}	
 	@PostMapping("/login")
     public ModelAndView login(@RequestParam("username") String username,
                               @RequestParam("password") String password) {
