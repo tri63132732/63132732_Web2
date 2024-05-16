@@ -1,33 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Author</title>
 </head>
 <body>
     <h1>Edit Author</h1>
-    <form id="editAuthorForm" method="POST" action="/authors/{authorID}">
-        <input type="hidden" id="authorID" name="authorID">
+    <form th:action="@{/authors/edit}" th:object="${author}" method="post">
+        <input type="hidden" th:field="*{authorID}" />
         <label for="authorName">Name:</label>
-        <input type="text" id="authorName" name="authorName"><br><br>
+        <input type="text" id="authorName" th:field="*{authorName}" /><br/>
         <label for="authorAlias">Alias:</label>
-        <input type="text" id="authorAlias" name="authorAlias"><br><br>
+        <input type="text" id="authorAlias" th:field="*{authorAlias}" /><br/>
         <label for="authorEmail">Email:</label>
-        <input type="email" id="authorEmail" name="authorEmail"><br><br>
+        <input type="text" id="authorEmail" th:field="*{authorEmail}" /><br/>
         <button type="submit">Save</button>
     </form>
-    <script>
-        // JavaScript to fetch author data and populate the form
-        const authorID = window.location.pathname.split('/').pop();
-        fetch(`/authors/${authorID}`)
-            .then(response => response.json())
-            .then(author => {
-                document.getElementById('authorID').value = author.authorID;
-                document.getElementById('authorName').value = author.authorName;
-                document.getElementById('authorAlias').value = author.authorAlias;
-                document.getElementById('authorEmail').value = author.authorEmail;
-            });
-    </script>
+    <a href="/authors">Back to List</a>
 </body>
 </html>

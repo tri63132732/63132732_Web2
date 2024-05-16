@@ -1,34 +1,32 @@
 package org2.NuyenTrongTri.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org2.NuyenTrongTri.model.AuthorModel;
-import org2.NuyenTrongTri.repositories.AuthorRepository;
-import java.util.List;
+import org2.NuyenTrongTri.repository.AuthorRepository;
 
 @Service
 public class AuthorService {
-
+    
     @Autowired
     private AuthorRepository authorRepository;
-
-    // Method to save an author
+    
+    public List<AuthorModel> findAllAuthors() {
+        return authorRepository.findAll();
+    }
+    
+    public Optional<AuthorModel> findAuthorById(long id) {
+        return authorRepository.findById(id);
+    }
+    
     public AuthorModel saveAuthor(AuthorModel author) {
         return authorRepository.save(author);
     }
-
-    // Method to get all authors
-    public List<AuthorModel> getAllAuthors() {
-        return authorRepository.findAll();
-    }
-
-    // Method to get author by ID
-    public AuthorModel getAuthorById(Long id) {
-        return authorRepository.findById(id).orElse(null);
-    }
-
-    // Method to delete author by ID
-    public void deleteAuthor(Long id) {
+    
+    public void deleteAuthorById(long id) {
         authorRepository.deleteById(id);
     }
 }

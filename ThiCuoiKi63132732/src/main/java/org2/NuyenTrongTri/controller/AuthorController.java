@@ -1,41 +1,62 @@
 package org2.NuyenTrongTri.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import org2.NuyenTrongTri.model.AuthorModel;
 import org2.NuyenTrongTri.service.AuthorService;
-import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/authors")
 public class AuthorController {
-
+    
     @Autowired
     private AuthorService authorService;
 
     @GetMapping
-    public List<AuthorModel> getAllAuthors() {
-        return authorService.getAllAuthors();
+    public String getAllAuthors(Model model) {
+        List<AuthorModel> authors = authorService.findAllAuthors();
+        model.addAttribute("authors", authors);
+        return "indexAuthor";
+    }
+    
+    @GetMapping("/add")
+    public String showAddAuthorForm(Model model) {
+        model.addAttribute("author", new AuthorModel());
+        return "addAuthor";
     }
 
-    @GetMapping("/{id}")
-    public AuthorModel getAuthorById(@PathVariable Long id) {
-        return authorService.getAuthorById(id);
+    @PostMapping("/add")
+    public String addAuthor(@ModelAttribute AuthorModel author) {
+        authorService.saveAuthor(author);
+        return "redirect:/authors";
     }
 
-    @PostMapping
-    public AuthorModel addAuthor(@RequestBody AuthorModel author) {
-        return authorService.saveAuthor(author);
+    @GetMapping("/edit/{id}")
+    public String showEditAuthorForm(@PathVariable Long id, Model model) {
+        Optional<AuthorModel> author = authorService.findAuthorById(id);
+        if (author.isPresent()) {
+            model.addAttribute("author", author.get());
+            return "editAuthor";
+        } else {
+            return "redirect:/authors";
+        }
     }
 
-    @PutMapping("/{id}")
-    public AuthorModel updateAuthor(@PathVariable Long id, @RequestBody AuthorModel author) {
-        author.setAuthorID(id);
-        return authorService.saveAuthor(author);
+    @PostMapping("/edit")
+    public String editAuthor(@ModelAttribute AuthorModel author) {
+        authorService.saveAuthor(author);
+        return "redirect:/authors";
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteAuthor(@PathVariable Long id) {
-        authorService.deleteAuthor(id);
+    @GetMapping("/delete/{id}")
+    public String deleteAuthor(@PathVariable Long id) {
+        authorService.deleteAuthorById(id);
+        return "redirect:/authors";
     }
 }

@@ -24,10 +24,7 @@ public class MainController {
 	public String login() {
 		return "login.html";
 	}
-	@GetMapping("/authors")
-	public String author() {
-		return "indexAuthor.html";
-	}	
+
 	@PostMapping("/login")
     public ModelAndView login(@RequestParam("username") String username,
                               @RequestParam("password") String password) {
