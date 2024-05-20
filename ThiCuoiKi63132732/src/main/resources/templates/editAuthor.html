@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Author</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hệ thống quản lí</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Edit Author</h1>
-    <form th:action="@{/authors/edit}" th:object="${author}" method="post">
-        <input type="hidden" th:field="*{authorID}" />
-        <label for="authorName">Name:</label>
-        <input type="text" id="authorName" th:field="*{authorName}" /><br/>
-        <label for="authorAlias">Alias:</label>
-        <input type="text" id="authorAlias" th:field="*{authorAlias}" /><br/>
-        <label for="authorEmail">Email:</label>
-        <input type="text" id="authorEmail" th:field="*{authorEmail}" /><br/>
-        <button type="submit">Save</button>
-    </form>
-    <a href="/authors">Back to List</a>
+    <div class="container">
+
+        <div class="clear"></div>
+		<br>
+        <!-- Navigation Header -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Chỉnh sửa tác giả</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/authors">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin tác giả</h3>
+                </div>
+                <div class="card-body">
+                    <div class="bs-stepper-content">
+                        <form th:action="@{/authors/edit}" th:object="${author}" method="post">
+                            <input type="hidden" th:field="*{authorID}" />
+                            <div class="form-group">
+                                <label for="authorName">Tên tác giả</label>
+                                <input type="text" th:field="*{authorName}" class="form-control" placeholder="Tên tác giả">
+                                <div th:if="${#fields.hasErrors('authorName')}" class="text-danger" th:errors="*{authorName}">Tên tác giả is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="authorAlias">Bí danh</label>
+                                <input type="text" th:field="*{authorAlias}" class="form-control" placeholder="Bí danh">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorBio">Tiểu sử</label>
+                                <input type="text" th:field="*{authorBio}" class="form-control" placeholder="Tiểu sử">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <a th:href="@{/authors}" class="btn btn-danger">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 </body>
 </html>

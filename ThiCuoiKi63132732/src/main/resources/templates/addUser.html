@@ -17,11 +17,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Thêm tác giả</h1>
+                        <h1>Thêm người dùng</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/authors">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item"><a href="/users">Danh sách người dùng</a></li>
                             <li class="breadcrumb-item active">Thêm mới</li>
                         </ol>
                     </div>
@@ -33,27 +33,31 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả mới</h3>
+                    <h3 class="card-title">Thông tin người dùng mới</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
-                        <form th:action="@{/authors/add}" th:object="${author}" method="post">
+                        <form th:action="@{/users/add}" th:object="${user}" method="post">
                             <div class="form-group">
-                                <label for="authorName">Tên tác giả</label>
-                                <input type="text" th:field="*{authorName}" class="form-control" placeholder="Tên tác giả">
-                                <div th:if="${#fields.hasErrors('authorName')}" class="text-danger" th:errors="*{authorName}">Tên tác giả is required</div>
+                                <label for="userName">Tên người dùng</label>
+                                <input type="text" th:field="*{userName}" class="form-control" placeholder="Tên người dùng">
+                                <div th:if="${#fields.hasErrors('userName')}" class="text-danger" th:errors="*{userName}">Tên người dùng is required</div>
                             </div>
                             <div class="form-group">
-                                <label for="authorAlias">Bí danh</label>
-                                <input type="text" th:field="*{authorAlias}" class="form-control" placeholder="Bí danh">
+                                <label for="userEmail">Email</label>
+                                <input type="text" th:field="*{userAlias}" class="form-control" placeholder="Eamil">
                             </div>
                             <div class="form-group">
-                                <label for="authorBio">Tiểu sử</label>
-                                <input type="text" th:field="*{authorBio}" class="form-control" placeholder="Tiểu sử">
+                                <label for="userPhone">SĐT</label>
+                                <input type="text" th:field="*{userBio}" class="form-control" placeholder="SĐT">
+                            </div>
+                            <div class="form-group">
+                                <label for="userAddress">Địa chỉ</label>
+                                <input type="text" th:field="*{userBio}" class="form-control" placeholder="Địa chỉ">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Lưu</button>
-                                <a href="/admin/authors" class="btn btn-danger">Quay lại</a>
+                                <a href="/admin/users" class="btn btn-danger">Quay lại</a>
                             </div>
                         </form>
                     </div>

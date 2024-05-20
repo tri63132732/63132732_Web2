@@ -11,41 +11,53 @@ import jakarta.persistence.Table;
 public class UserModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userID;
+	private long userID;
 	private String userName;
 	private String userEmail;
-	private String userPassword;
+	private String userPhone;
+	private String userAddress;
 	
-	public UserModel(int userID, String userName, String userEmail, String userPassword) {
-		this.userID = userID;
+	public UserModel(String userName, String userEmail, String userPhone, String userAddress) {
 		this.userName = userName;
 		this.userEmail = userEmail;
-		this.userPassword = userPassword;
+		this.userPhone = userPhone;
+		this.userAddress = userAddress;
 	}
 	
-	public int getUserID() {
-		return userID;
+	public UserModel() {
+		
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
+
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserPassword() {
-		return userPassword;
+
+	public String getUserPhone() {
+		return userPhone;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 	
 	

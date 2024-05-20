@@ -20,9 +20,7 @@ public class BookModel {
     @JoinColumn(name="authorID")
     private AuthorModel author;
 
-    @ManyToOne
-    @JoinColumn(name="categoryID")
-    private CategoryModel category;
+
 
     @ManyToOne
     @JoinColumn(name="genreID")

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import org2.NuyenTrongTri.model.AuthorModel;
@@ -32,28 +33,33 @@ public class AuthorController {
     }
 
     @PostMapping("/add")
-    public String addAuthor(@ModelAttribute AuthorModel author) {
+    public String addAuthor(@ModelAttribute("author") AuthorModel author, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "addAuthor";
+        }
         authorService.saveAuthor(author);
         return "redirect:/authors";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditAuthorForm(@PathVariable Long id, Model model) {
+    public String showEditAuthorForm(@PathVariable("id") long id, Model model) {
         Optional<AuthorModel> author = authorService.findAuthorById(id);
-        if (author.isPresent()) {
-            model.addAttribute("author", author.get());
-            return "editAuthor";
-        } else {
+        if (author == null) {
+            // handle author not found, e.g., redirect to an error page or the authors list
             return "redirect:/authors";
         }
+        model.addAttribute("author", author);
+        return "editAuthor";
     }
 
     @PostMapping("/edit")
-    public String editAuthor(@ModelAttribute AuthorModel author) {
+    public String editAuthor(@ModelAttribute("author") AuthorModel author, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "editAuthor";
+        }
         authorService.saveAuthor(author);
         return "redirect:/authors";
     }
-
     @GetMapping("/delete/{id}")
     public String deleteAuthor(@PathVariable Long id) {
         authorService.deleteAuthorById(id);

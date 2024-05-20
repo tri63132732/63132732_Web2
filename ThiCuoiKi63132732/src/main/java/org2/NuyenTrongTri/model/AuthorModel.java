@@ -13,13 +13,13 @@ public class AuthorModel {
     private long authorID;
     private String authorName;
     private String authorAlias;
-    private String authorEmail;
+    private String authorBio;
     // Constructors
 
-    public AuthorModel(String authorName, String authorAlias, String authorEmail) {
+    public AuthorModel(String authorName, String authorAlias, String authorBio) {
         this.authorName = authorName;
         this.authorAlias = authorAlias;
-        this.authorEmail = authorEmail;
+        this.authorBio = authorBio;
     }
     
     public AuthorModel() {
@@ -51,11 +51,12 @@ public class AuthorModel {
         this.authorAlias = authorAlias;
     }
     
-    public String getAuthorEmail() {
-        return authorEmail;
+    public String getAuthorBio() {
+        return authorBio;
     }
 
-    public void setAuthorEmail(String authorEmail) {
-        this.authorEmail= authorEmail;
+    public void setAuthorBio(String authorBio) {
+        this.authorBio= authorBio;
     }
+    
 }

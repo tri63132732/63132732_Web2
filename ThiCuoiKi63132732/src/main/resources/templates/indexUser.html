@@ -75,30 +75,32 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>Danh sách tác giả</h1>
-        <a href="/authors/add" class="btn btn-primary">Thêm tác giả</a>
+        <h1>Danh sách người dùng</h1>
+        <a href="/users/add" class="btn btn-primary">Thêm người dùng</a>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Tên</th>
-                    <th>Bí danh</th>
-                    <th>Tiểu sử</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${authors == null || authors.isEmpty()}">
-                    <td colspan="3">No authors available</td>
+                <tr th:if="${users == null || users.isEmpty()}">
+                    <td colspan="3">No users available</td>
                 </tr>
-                <tr th:each="author, iterStat : ${authors}">
+                <tr th:each="user, iterStat : ${users}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${author.authorName}">Name</td>
-                    <td th:text="${author.authorAlias}">Alias</td>
-                    <td th:text="${author.authorBio}">Tiểu sử</td>
+                    <td th:text="${user.userName}">Tên</td>
+                    <td th:text="${user.userEmail}">Email</td>
+					<td th:text="${user.userPhone}">SĐT</td>
+                    <td th:text="${user.userAddress}">Địa chỉ</td>
                     <td>
-                        <a th:href="@{/authors/edit/{id}(id=${author.authorID})}">Edit</a> |
-                        <a th:href="@{/authors/delete/{id}(id=${author.authorID})}">Delete</a>
+                        <a th:href="@{/users/edit/{id}(id=${user.userID})}">Edit</a> |
+                        <a th:href="@{/users/delete/{id}(id=${user.userID})}">Delete</a>
                     </td>
                 </tr>
             </tbody>
