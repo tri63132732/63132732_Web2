@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class BookModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bookID;
+    private long bookID;
     private String bookName;
     private String bookDescription;
     private String bookComment;
@@ -28,15 +28,16 @@ public class BookModel {
 
     // Constructors
 
-    public BookModel(int bookID, String bookName, String bookDescription, String bookComment) {
-        this.bookID = bookID;
+    public BookModel(String bookName, String bookDescription, String bookComment) {
         this.bookName = bookName;
         this.bookDescription = bookDescription;
         this.bookComment = bookComment;
     }
-
+    public BookModel() {
+    	
+    }
     // Getters and setters
-    public int getbookID() {
+    public long getbookID() {
         return bookID;
     }
 

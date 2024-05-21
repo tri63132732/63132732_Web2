@@ -10,17 +10,18 @@ import jakarta.persistence.Table;
 public class GenreModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int genreID;
+    private long genreID;
     private String genreName;
 
     // Constructors
-    public GenreModel(int genreID, String genreName) {
-        this.genreID = genreID;
+    public GenreModel(String genreName) {
         this.genreName = genreName;
     }
-
+    public GenreModel() {
+    	
+    }
     // Getters and setters
-    public int getGenreID() {
+    public long getGenreID() {
         return genreID;
     }
 
