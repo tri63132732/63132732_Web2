@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Borrow</title>
+</head>
+<body>
+    <h1>Delete Borrow</h1>
+    <p>Are you sure you want to delete this borrow?</p>
+    <form action="#" th:action="@{/borrows/delete}" method="post">
+        <input type="hidden" name="id" th:value="${borrow.id}">
+        <p>Title: <span th:text="${borrow.title}"></span></p>
+        <p>User: <span th:text="${borrow.user.name}"></span></p>
+
+		<p>Book: <span th:text="${borrow.book.title}"></span></p>
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/borrows">Back to List</a>
+</body>
+</html>

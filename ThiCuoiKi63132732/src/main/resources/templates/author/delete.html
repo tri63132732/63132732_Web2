@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Xóa tác giả</title>
+</head>
+<body>
+    <h1>Xóa tác giả</h1>
+    <p>Bạn có muốn xóa tác giả này?</p>
+    <form method="post" th:action="@{/authors/delete}">
+  		<input type="hidden" name="id" th:value="${author.id}">
+  		<p>Tên: <span th:text="${author.name}"></span></p>
+  		<p>Quốc tịch: <span th:text="${author.country}"></span></p>
+  		<button type="submit">Xóa</button>
+	</form>
+    
+    <a href="/authors">Quay lại</a>
+</body>
+</html>

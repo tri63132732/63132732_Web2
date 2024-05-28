@@ -74,7 +74,33 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            
+            <div class="container">
+        <h1>NXB List</h1>
+    <a href="/nxbs/create" class="btn btn-primary">Add New NXB</a>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+            <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${nxbs == null || nxbs.isEmpty()}">
+                    <td>No authors available</td>
+                </tr>
+                <tr th:each="nxb, iterStat : ${nxbs}">
+                    <td th:text="${iterStat.index + 1}">1</td>
+                    <td th:text="${nxb.name}">Name</td>
+            <td>
+                <a th:href="@{/nxbs/edit/{id}(id=${nxb.id})}">Edit</a>
+                <a th:href="@{/nxbs/delete/{id}(id=${nxb.id})}">Delete</a>
+            </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -82,3 +108,5 @@
                 <b>Version</b> 3.2.0-rc
             </div>
             <strong>Copyright
+
+

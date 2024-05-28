@@ -37,21 +37,18 @@
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
-                        <form th:action="@{/authors/edit}" th:object="${author}" method="post">
-                            <input type="hidden" th:field="*{authorID}" />
+                        <form action="#" th:action="@{/authors/edit}" th:object="${author}" method="post">
+                            <input type="hidden" name="id" th:value="${author.id}">
                             <div class="form-group">
-                                <label for="authorName">Tên tác giả</label>
-                                <input type="text" th:field="*{authorName}" class="form-control" placeholder="Tên tác giả">
-                                <div th:if="${#fields.hasErrors('authorName')}" class="text-danger" th:errors="*{authorName}">Tên tác giả is required</div>
+                                <label for="name">Tên tác giả</label>
+                                <input type="text" th:field="*{name}" class="form-control" placeholder="Tên tác giả">
+                                
                             </div>
                             <div class="form-group">
-                                <label for="authorAlias">Bí danh</label>
-                                <input type="text" th:field="*{authorAlias}" class="form-control" placeholder="Bí danh">
+                                <label for="country">Quốc tịch</label>
+                                <input type="text" th:field="*{country}" class="form-control" placeholder="Quốc tịch">
                             </div>
-                            <div class="form-group">
-                                <label for="authorBio">Tiểu sử</label>
-                                <input type="text" th:field="*{authorBio}" class="form-control" placeholder="Tiểu sử">
-                            </div>
+
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Lưu</button>
                                 <a th:href="@{/authors}" class="btn btn-danger">Quay lại</a>
@@ -68,3 +65,4 @@
 
 </body>
 </html>
+

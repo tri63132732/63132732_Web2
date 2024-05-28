@@ -1,68 +1,64 @@
 package org2.NuyenTrongTri.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import org2.NuyenTrongTri.model.UserModel;
+import org2.NuyenTrongTri.model.User;
 import org2.NuyenTrongTri.service.UserService;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String getAllUsers(Model model) {
-        List<UserModel> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "indexUser";
-    }
-    
-    @GetMapping("/add")
-    public String showAddUserForm(Model model) {
-        model.addAttribute("user", new UserModel());
-        return "addUser";
+    @GetMapping("/users")
+    public String index(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "user/index";
     }
 
-    @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") UserModel user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "addUser";
-        }
+    @GetMapping("/users/create")
+    public String createForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user/create";
+    }
+
+    @PostMapping("/users/create")
+    public String createUser(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditUserForm(@PathVariable("id") long id, Model model) {
-        Optional<UserModel> user = userService.findUserById(id);
-        if (user == null) {
-            // handle user not found, e.g., redirect to an error page or the users list
-            return "redirect:/users";
-        }
+    @GetMapping("/users/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
-        return "editUser";
+        return "user/edit";
     }
 
-    @PostMapping("/edit")
-    public String editUser(@ModelAttribute("user") UserModel user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "editUser";
-        }
+    @PostMapping("/users/edit")
+    public String editUser(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.deleteUserById(id);
+
+    @GetMapping("/users/delete/{id}")
+    public String deleteForm(@PathVariable Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "user/delete";
+    }
+
+    @PostMapping("/users/delete")
+    public String deleteUser(@RequestParam Long id) {
+        userService.deleteUser(id);
         return "redirect:/users";
     }
 }

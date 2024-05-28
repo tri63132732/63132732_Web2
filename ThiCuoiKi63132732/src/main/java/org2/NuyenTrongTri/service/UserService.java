@@ -1,32 +1,35 @@
 package org2.NuyenTrongTri.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org2.NuyenTrongTri.model.UserModel;
+
+import org2.NuyenTrongTri.model.User;
 import org2.NuyenTrongTri.repository.UserRepository;
+
+
 
 @Service
 public class UserService {
-    
     @Autowired
     private UserRepository userRepository;
-    
-    public List<UserModel> findAllUsers() {
+
+    public Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }
-    
-    public Optional<UserModel> findUserById(long id) {
-        return userRepository.findById(id);
+
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
     
-    public UserModel saveUser(UserModel user) {
-        return userRepository.save(user);
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
-    
-    public void deleteUserById(long id) {
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
 }

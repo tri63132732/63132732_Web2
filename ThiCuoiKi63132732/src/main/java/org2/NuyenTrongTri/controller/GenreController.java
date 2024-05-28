@@ -1,68 +1,64 @@
 package org2.NuyenTrongTri.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import org2.NuyenTrongTri.model.GenreModel;
+import org2.NuyenTrongTri.model.Genre;
 import org2.NuyenTrongTri.service.GenreService;
 
 @Controller
-@RequestMapping("/genres")
 public class GenreController {
-    
+
     @Autowired
     private GenreService genreService;
 
-    @GetMapping
-    public String getAllGenres(Model model) {
-        List<GenreModel> genres = genreService.findAllGenres();
-        model.addAttribute("genres", genres);
-        return "indexGenre";
-    }
-    
-    @GetMapping("/add")
-    public String showAddGenreForm(Model model) {
-        model.addAttribute("genre", new GenreModel());
-        return "addGenre";
+    @GetMapping("/genres")
+    public String index(Model model) {
+        model.addAttribute("genres", genreService.getAllGenres());
+        return "genre/index";
     }
 
-    @PostMapping("/add")
-    public String addGenre(@ModelAttribute("genre") GenreModel genre, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "addGenre";
-        }
+    @GetMapping("/genres/create")
+    public String createForm(Model model) {
+        model.addAttribute("genre", new Genre());
+        return "genre/create";
+    }
+
+    @PostMapping("/genres/create")
+    public String createGenre(@ModelAttribute Genre genre) {
         genreService.saveGenre(genre);
         return "redirect:/genres";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditGenreForm(@PathVariable("id") long id, Model model) {
-        Optional<GenreModel> genre = genreService.findGenreById(id);
-        if (genre == null) {
-            // handle genre not found, e.g., redirect to an error page or the genres list
-            return "redirect:/genres";
-        }
+    @GetMapping("/genres/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        Genre genre = genreService.getGenreById(id);
         model.addAttribute("genre", genre);
-        return "editGenre";
+        return "genre/edit";
     }
 
-    @PostMapping("/edit")
-    public String editGenre(@ModelAttribute("genre") GenreModel genre, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "editGenre";
-        }
+    @PostMapping("/genres/edit")
+    public String editGenre(@ModelAttribute Genre genre) {
         genreService.saveGenre(genre);
         return "redirect:/genres";
     }
-    @GetMapping("/delete/{id}")
-    public String deleteGenre(@PathVariable Long id) {
-        genreService.deleteGenreById(id);
+
+    @GetMapping("/genres/delete/{id}")
+    public String deleteForm(@PathVariable Long id, Model model) {
+        Genre genre = genreService.getGenreById(id);
+        model.addAttribute("genre", genre);
+        return "genre/delete";
+    }
+
+    @PostMapping("/genres/delete")
+    public String deleteGenre(@RequestParam Long id) {
+        genreService.deleteGenre(id);
         return "redirect:/genres";
     }
 }

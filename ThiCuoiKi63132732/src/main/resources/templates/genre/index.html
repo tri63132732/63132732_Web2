@@ -63,7 +63,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="./Content/clients/index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="./Content/clients/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Hệ thống quản lí sách</span>
             </a>
@@ -75,31 +75,28 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>Danh sách tác giả</h1>
-        <a href="/authors/add" class="btn btn-primary">Thêm tác giả</a>
+        <h1>Genre List</h1>
+    <a href="/genres/create" class="btn btn-primary">Add New Genre</a>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tên</th>
-                    <th>Bí danh</th>
-                    <th>Tiểu sử</th>
-                    <th>Actions</th>
+                    <th>Name</th>
+            <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${authors == null || authors.isEmpty()}">
-                    <td colspan="3">No authors available</td>
+                <tr th:if="${genres == null || genres.isEmpty()}">
+                    <td>No authors available</td>
                 </tr>
-                <tr th:each="author, iterStat : ${authors}">
+                <tr th:each="genre, iterStat : ${genres}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${author.authorName}">Name</td>
-                    <td th:text="${author.authorAlias}">Alias</td>
-                    <td th:text="${author.authorBio}">Tiểu sử</td>
-                    <td>
-                        <a th:href="@{/authors/edit/{id}(id=${author.authorID})}">Edit</a> |
-                        <a th:href="@{/authors/delete/{id}(id=${author.authorID})}">Delete</a>
-                    </td>
+                    <td th:text="${genre.name}">Name</td>
+            <td>
+                <a th:href="@{/genres/edit/{id}(id=${genre.id})}">Edit</a>
+                <a th:href="@{/genres/delete/{id}(id=${genre.id})}">Delete</a>
+            </td>
                 </tr>
             </tbody>
         </table>
@@ -111,3 +108,5 @@
                 <b>Version</b> 3.2.0-rc
             </div>
             <strong>Copyright
+
+

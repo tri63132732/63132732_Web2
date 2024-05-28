@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Thêm tác giả</h1>
+                        <h1>Chỉnh sửa tác giả</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/authors">Danh sách tác giả</a></li>
-                            <li class="breadcrumb-item active">Thêm mới</li>
+                            <li class="breadcrumb-item"><a href="/users">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item active">Chỉnh sửa</li>
                         </ol>
                     </div>
                 </div>
@@ -33,27 +33,32 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả mới</h3>
+                    <h3 class="card-title">Thông tin tác giả</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
-                        <form th:action="@{/authors/add}" th:object="${author}" method="post">
+                        <form action="#" th:action="@{/users/edit}" th:object="${user}" method="post">
+                            <input type="hidden" name="id" th:value="${user.id}">
                             <div class="form-group">
-                                <label for="authorName">Tên tác giả</label>
-                                <input type="text" th:field="*{authorName}" class="form-control" placeholder="Tên tác giả">
-                                <div th:if="${#fields.hasErrors('authorName')}" class="text-danger" th:errors="*{authorName}">Tên tác giả is required</div>
+                                <label for="name">Tên</label>
+                                <input type="text" th:field="*{name}" class="form-control" placeholder="Tên">
+                            </div>
+							<div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" th:field="*{email}" class="form-control" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <label for="authorAlias">Bí danh</label>
-                                <input type="text" th:field="*{authorAlias}" class="form-control" placeholder="Bí danh">
+                                <label for="phone">Phone</label>
+                                <input type="text" th:field="*{phone}" class="form-control" placeholder="Phone">
                             </div>
                             <div class="form-group">
-                                <label for="authorBio">Tiểu sử</label>
-                                <input type="text" th:field="*{authorBio}" class="form-control" placeholder="Tiểu sử">
+                                <label for="address">Address</label>
+                                <input type="text" th:field="*{address}" class="form-control" placeholder="Address">
                             </div>
+
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Lưu</button>
-                                <a href="/authors" class="btn btn-danger">Quay lại</a>
+                                <a th:href="@{/users}" class="btn btn-danger">Quay lại</a>
                             </div>
                         </form>
                     </div>
@@ -67,3 +72,5 @@
 
 </body>
 </html>
+
+

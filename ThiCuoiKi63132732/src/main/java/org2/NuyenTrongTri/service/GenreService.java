@@ -1,32 +1,35 @@
 package org2.NuyenTrongTri.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org2.NuyenTrongTri.model.GenreModel;
+
+import org2.NuyenTrongTri.model.Genre;
 import org2.NuyenTrongTri.repository.GenreRepository;
+
+
 
 @Service
 public class GenreService {
-    
     @Autowired
     private GenreRepository genreRepository;
-    
-    public List<GenreModel> findAllGenres() {
+
+    public Iterable<Genre> getAllGenres() {
         return genreRepository.findAll();
     }
-    
-    public Optional<GenreModel> findGenreById(long id) {
-        return genreRepository.findById(id);
+
+    public Genre findById(Long id) {
+        return genreRepository.findById(id).orElse(null);
     }
     
-    public GenreModel saveGenre(GenreModel genre) {
-        return genreRepository.save(genre);
+    public Genre getGenreById(Long id) {
+        return genreRepository.findById(id).orElse(null);
     }
-    
-    public void deleteGenreById(long id) {
+
+    public void saveGenre(Genre genre) {
+        genreRepository.save(genre);
+    }
+
+    public void deleteGenre(Long id) {
         genreRepository.deleteById(id);
     }
 }

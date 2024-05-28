@@ -63,7 +63,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="./Content/clients/index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="./Content/clients/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Hệ thống quản lí sách</span>
             </a>
@@ -75,33 +75,33 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>Danh sách người dùng</h1>
-        <a href="/users/add" class="btn btn-primary">Thêm người dùng</a>
+        <h1>Book List</h1>
+    <a href="/books/create" class="btn btn-primary">Add New Book</a> 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tên</th>
-                    <th>Email</th>
-                    <th>SĐT</th>
-                    <th>Địa chỉ</th>
-                    <th>Actions</th>
+                    <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>NXB</th>
+            <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${users == null || users.isEmpty()}">
-                    <td colspan="3">No users available</td>
+                <tr th:if="${books == null || books.isEmpty()}">
+                    <td>No authors available</td>
                 </tr>
-                <tr th:each="user, iterStat : ${users}">
+                <tr th:each="book, iterStat : ${books}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${user.userName}">Tên</td>
-                    <td th:text="${user.userEmail}">Email</td>
-					<td th:text="${user.userPhone}">SĐT</td>
-                    <td th:text="${user.userAddress}">Địa chỉ</td>
+                    <td th:text="${book.title}">Title</td>
+            <td th:text="${book.author.name}">Author</td>
+            <td th:text="${book.genre.name}">Genre</td>
+            <td th:text="${book.nxb.name}">NXB</td>
                     <td>
-                        <a th:href="@{/users/edit/{id}(id=${user.userID})}">Edit</a> |
-                        <a th:href="@{/users/delete/{id}(id=${user.userID})}">Delete</a>
-                    </td>
+                <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>
+                <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
+            </td>
                 </tr>
             </tbody>
         </table>
@@ -113,3 +113,5 @@
                 <b>Version</b> 3.2.0-rc
             </div>
             <strong>Copyright
+
+
