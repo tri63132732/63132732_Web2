@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Delete NXB</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hệ thống quản lí</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Delete NXB</h1>
-    <p>Are you sure you want to delete this nxb?</p>
-    <form action="#" th:action="@{/nxbs/delete}" method="post">
-        <input type="hidden" name="id" th:value="${nxb.id}">
-        <p>Name: <span th:text="${nxb.name}"></span></p>
-        <button type="submit">Delete</button>
-    </form>
-    <a href="/nxbs">Back to List</a>
+    <div class="container">
+
+        <div class="clear"></div>
+		<br>
+        <!-- Navigation Header -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Chỉnh sửa tác giả</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/nxbs">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin tác giả</h3>
+                </div>
+                <div class="card-body">
+                    <div class="bs-stepper-content">
+                        <form action="#" th:action="@{/nxbs/delete}" method="post">
+                            <input type="hidden" name="id" th:value="${nxb.id}">
+                            <div class="form-group">
+                                
+                                <p>Name: <span th:text="${nxb.name}"></span></p>
+                                
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <a th:href="@{/nxbs}" class="btn btn-danger">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 </body>
 </html>
+
+
+
+
+

@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Xóa tác giả</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hệ thống quản lí</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Xóa tác giả</h1>
-    <p>Bạn có muốn xóa tác giả này?</p>
-    <form method="post" th:action="@{/authors/delete}">
+    <div class="container">
+
+        <div class="clear"></div>
+		<br>
+        <!-- Navigation Header -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Chỉnh sửa tác giả</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/authors">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin tác giả</h3>
+                </div>
+                <div class="card-body">
+                    <div class="bs-stepper-content">
+                        <form method="post" th:action="@{/authors/delete}">
   		<input type="hidden" name="id" th:value="${author.id}">
   		<p>Tên: <span th:text="${author.name}"></span></p>
   		<p>Quốc tịch: <span th:text="${author.country}"></span></p>
-  		<button type="submit">Xóa</button>
-	</form>
-    
-    <a href="/authors">Quay lại</a>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <a th:href="@{/authors}" class="btn btn-danger">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 </body>
 </html>
+
+
