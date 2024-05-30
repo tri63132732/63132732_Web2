@@ -75,27 +75,27 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>NXB List</h1>
-    <a href="/nxbs/create" class="btn btn-primary">Add New NXB</a>
+        <h1>Danh sách nhà xuất bảnt</h1>
+    <a href="/nxbs/create" class="btn btn-primary">Thêm nhà xuất bản mới</a>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th>Tên nhà xuất bản</th>
             <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:if="${nxbs == null || nxbs.isEmpty()}">
-                    <td>No authors available</td>
+                    <td>Hiện chưa có nhà xuất bản</td>
                 </tr>
                 <tr th:each="nxb, iterStat : ${nxbs}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${nxb.name}">Name</td>
+                    <td th:text="${nxb.name}">Tên</td>
             <td>
-                <a th:href="@{/nxbs/edit/{id}(id=${nxb.id})}">Edit</a>
-                <a th:href="@{/nxbs/delete/{id}(id=${nxb.id})}">Delete</a>
+                <a th:href="@{/nxbs/edit/{id}(id=${nxb.id})}">Sửa</a>|
+                <a th:href="@{/nxbs/delete/{id}(id=${nxb.id})}">Xóa</a>
             </td>
                 </tr>
             </tbody>

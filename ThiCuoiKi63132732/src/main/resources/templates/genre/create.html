@@ -17,11 +17,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Thêm tác giả</h1>
+                        <h1>Thêm thể loại</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/genres">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item"><a href="/genres">Danh sách thể loại</a></li>
                             <li class="breadcrumb-item active">Thêm mới</li>
                         </ol>
                     </div>
@@ -33,14 +33,14 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả mới</h3>
+                    <h3 class="card-title">Thông tin thể loại mới</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
                         <form action="#" th:action="@{/genres/create}" th:object="${genre}" method="post">
                             <div class="form-group">
-                                <label for="name">Tên tác giả</label>
-                                <input type="text" th:field="*{name}" class="form-control" placeholder="Tên tác giả">
+                                <label for="name">Tên thể loại</label>
+                                <input type="text" th:field="*{name}" class="form-control" placeholder="Tên thể loại">
                             </div>
 
 

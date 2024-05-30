@@ -17,11 +17,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Chỉnh sửa tác giả</h1>
+                        <h1>Chỉnh sửa mượn</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/borrows">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item"><a href="/borrows">Danh sách mượn</a></li>
                             <li class="breadcrumb-item active">Chỉnh sửa</li>
                         </ol>
                     </div>
@@ -33,25 +33,25 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả</h3>
+                    <h3 class="card-title">Thông tin mượn</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
                         <form action="#" th:action="@{/borrows/edit}" th:object="${borrow}" method="post">
                             <input type="hidden" name="id" th:value="${borrow.id}">
                             <div class="form-group">
-                                <label for="title">Title:</label>
+                                <label for="title">Ngày mượn:</label>
         <input type="text" id="title" th:field="*{title}" class="form-control"/>
                             </div>
                             
                             <div class="form-group">
-                                <label for="user">User:</label>
+                                <label for="user">Thành viên mượn:</label>
         <select id="user" name="userId">
             <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}">User Name</option>
         </select>
                             </div>
 	<div class="form-group">
-                                <label for="book">Book:</label>
+                                <label for="book">Sách:</label>
         <select id="book" name="bookId">
             <option th:each="book: ${books}" th:value="${book.id}" th:text="${book.title}">Book Name</option>
         </select>

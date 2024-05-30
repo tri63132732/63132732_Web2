@@ -17,11 +17,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Chỉnh sửa tác giả</h1>
+                        <h1>Chỉnh sửa sách</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/books">Danh sách tác giả</a></li>
+                            <li class="breadcrumb-item"><a href="/books">Danh sách sách</a></li>
                             <li class="breadcrumb-item active">Chỉnh sửa</li>
                         </ol>
                     </div>
@@ -33,31 +33,31 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả</h3>
+                    <h3 class="card-title">Thông tin sách</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
                         <form action="#" th:action="@{/books/edit}" th:object="${book}" method="post">
                             <input type="hidden" name="id" th:value="${book.id}">
                             <div class="form-group">
-                                <label for="title">Title:</label>
+                                <label for="title">Tiêu đề:</label>
         <input type="text" id="title" th:field="*{title}" class="form-control"/>
                             </div>
                             
                             <div class="form-group">
-                                <label for="author">Author:</label>
+                                <label for="author">Tác giả:</label>
         <select id="author" name="authorId">
             <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">Author Name</option>
         </select>
                             </div>
 <div class="form-group">
-                                <label for="genre">Genre:</label>
+                                <label for="genre">Thể loại:</label>
         <select id="genre" name="genreId">
             <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}">Genre Name</option>
         </select>
                             </div>
                             <div class="form-group">
-                                <label for="nxb">NXB:</label>
+                                <label for="nxb">Nhà xuất bản:</label>
         <select id="nxb" name="nxbId">
             <option th:each="nxb: ${nxbs}" th:value="${nxb.id}" th:text="${nxb.name}">NXB Name</option>
         </select>

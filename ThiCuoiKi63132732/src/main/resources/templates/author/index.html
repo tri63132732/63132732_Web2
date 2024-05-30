@@ -89,7 +89,7 @@
             </thead>
             <tbody>
                 <tr th:if="${authors == null || authors.isEmpty()}">
-                    <td>No authors available</td>
+                    <td>Hiện không có tác giả</td>
                 </tr>
                 <tr th:each="author, iterStat : ${authors}">
                     <td th:text="${iterStat.index + 1}">1</td>

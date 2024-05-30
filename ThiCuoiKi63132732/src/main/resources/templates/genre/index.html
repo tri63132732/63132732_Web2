@@ -75,27 +75,27 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>Genre List</h1>
-    <a href="/genres/create" class="btn btn-primary">Add New Genre</a>
+        <h1>Các thể loại</h1>
+    <a href="/genres/create" class="btn btn-primary">Thể loại mới</a>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-            <th>Actions</th>
+                    <th>Thể loại</th>
+            <th>Chức năng</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:if="${genres == null || genres.isEmpty()}">
-                    <td>No authors available</td>
+                    <td>Chưa có thể loại nào</td>
                 </tr>
                 <tr th:each="genre, iterStat : ${genres}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${genre.name}">Name</td>
+                    <td th:text="${genre.name}">Thể loại</td>
             <td>
-                <a th:href="@{/genres/edit/{id}(id=${genre.id})}">Edit</a>
-                <a th:href="@{/genres/delete/{id}(id=${genre.id})}">Delete</a>
+                <a th:href="@{/genres/edit/{id}(id=${genre.id})}">Sửa</a>|
+                <a th:href="@{/genres/delete/{id}(id=${genre.id})}">Xóa</a>
             </td>
                 </tr>
             </tbody>

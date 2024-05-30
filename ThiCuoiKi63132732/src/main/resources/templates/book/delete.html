@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Chỉnh sửa tác giả</h1>
+                        <h1>Xóa sách</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/books">Danh sách tác giả</a></li>
-                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                            <li class="breadcrumb-item"><a href="/books">Danh sách sách</a></li>
+                            <li class="breadcrumb-item active">Xóa</li>
                         </ol>
                     </div>
                 </div>
@@ -33,16 +33,16 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả</h3>
+                    <h3 class="card-title">Thông tin sách</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
                         <form action="#" th:action="@{/books/delete}" method="post">
         <input type="hidden" name="id" th:value="${book.id}">
-        <p>Title: <span th:text="${book.title}"></span></p>
-        <p>Author: <span th:text="${book.author.name}"></span></p>
-        <p>Genre: <span th:text="${book.genre.name}"></span></p>
-		<p>NXB: <span th:text="${book.nxb.name}"></span></p>
+        <p>Tiêu đề: <span th:text="${book.title}"></span></p>
+        <p>Tác giả: <span th:text="${book.author.name}"></span></p>
+        <p>Thể loại: <span th:text="${book.genre.name}"></span></p>
+		<p>Nhà xuất bản: <span th:text="${book.nxb.name}"></span></p>
 
 
                             <div class="form-group">

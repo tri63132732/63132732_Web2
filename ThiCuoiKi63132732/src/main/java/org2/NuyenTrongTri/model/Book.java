@@ -9,6 +9,7 @@ public class Book {
     private Long id;
     private String title;
 
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
@@ -61,6 +62,8 @@ public class Book {
 	public void setNxb(NXB nxb) {
 		this.nxb = nxb;
 	}
+
+
     
 }
 

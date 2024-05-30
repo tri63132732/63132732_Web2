@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Chỉnh sửa tác giả</h1>
+                        <h1>Xóa thành viên</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/users">Danh sách tác giả</a></li>
-                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                            <li class="breadcrumb-item"><a href="/users">Danh sách thành viên</a></li>
+                            <li class="breadcrumb-item active">Xóa</li>
                         </ol>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả</h3>
+                    <h3 class="card-title">Thông tin thành viên</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
@@ -41,8 +41,8 @@
         <input type="hidden" name="id" th:value="${user.id}">
         <p>Name: <span th:text="${user.name}"></span></p>
         <p>Email: <span th:text="${user.email}"></span></p>
-        <p>Phone: <span th:text="${user.phone}"></span></p>
-        <p>Address: <span th:text="${user.address}"></span></p>
+        <p>SĐT: <span th:text="${user.phone}"></span></p>
+        <p>Địa chỉ: <span th:text="${user.address}"></span></p>
 
 
                             <div class="form-group">

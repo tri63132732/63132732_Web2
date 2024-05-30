@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Chỉnh sửa tác giả</h1>
+                        <h1>Xóa mượn</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/borrows">Danh sách tác giả</a></li>
-                            <li class="breadcrumb-item active">Chỉnh sửa</li>
+                            <li class="breadcrumb-item"><a href="/borrows">Danh sách mượn</a></li>
+                            <li class="breadcrumb-item active">Xóa</li>
                         </ol>
                     </div>
                 </div>
@@ -33,16 +33,16 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin tác giả</h3>
+                    <h3 class="card-title">Thông tin mượn</h3>
                 </div>
                 <div class="card-body">
                     <div class="bs-stepper-content">
                         <form action="#" th:action="@{/borrows/delete}" method="post">
         <input type="hidden" name="id" th:value="${borrow.id}">
-        <p>Title: <span th:text="${borrow.title}"></span></p>
-        <p>User: <span th:text="${borrow.user.name}"></span></p>
+        <p>Ngày mượn: <span th:text="${borrow.title}"></span></p>
+        <p>Thành viên mượn: <span th:text="${borrow.user.name}"></span></p>
 
-		<p>Book: <span th:text="${borrow.book.title}"></span></p>
+		<p>Sách: <span th:text="${borrow.book.title}"></span></p>
 
 
                             <div class="form-group">

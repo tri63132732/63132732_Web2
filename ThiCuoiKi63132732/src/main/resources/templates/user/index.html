@@ -75,34 +75,34 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>User List</h1>
-    <a href="/users/create" class="btn btn-primary">Add New User</a>
+        <h1>Danh sách thành viên</h1>
+    <a href="/users/create" class="btn btn-primary">Thêm thành viên mới</a>
 
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th>Tên</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Actions</th>
+            <th>SĐT</th>
+            <th>Địa chỉ</th>
+            <th>Chức năng</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:if="${users == null || users.isEmpty()}">
-                    <td>No authors available</td>
+                    <td>Chưa có thành viên nào</td>
                 </tr>
                 <tr th:each="user, iterStat : ${users}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${user.name}">Name</td>
+                    <td th:text="${user.name}">Tên</td>
             <td th:text="${user.email}">Email</td>
-            <td th:text="${user.phone}">Phone</td>
-            <td th:text="${user.address}">Address</td>
+            <td th:text="${user.phone}">SĐT</td>
+            <td th:text="${user.address}">Địa chỉ</td>
             <td>
-                <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
-                <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+                <a th:href="@{/users/edit/{id}(id=${user.id})}">Sửa</a>|
+                <a th:href="@{/users/delete/{id}(id=${user.id})}">Xóa</a>
             </td>
                 </tr>
             </tbody>

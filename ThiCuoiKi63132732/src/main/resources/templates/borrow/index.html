@@ -75,33 +75,33 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container">
-        <h1>Borrow List</h1>
-    <a href="/borrows/create" class="btn btn-primary">Add New Borrow</a>
+        <h1>Danh sách cho mượn</h1>
+    <a href="/borrows/create" class="btn btn-primary">Thêm mượn</a>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-            <th>User</th>
+                    <th>Ngày mượn</th>
+            <th>Thành viên mượn</th>
 
-            <th>Book</th>
-            <th>Actions</th>
+            <th>Sách</th>
+            <th>Chức năng</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:if="${borrows == null || borrows.isEmpty()}">
-                    <td>No authors available</td>
+                    <td>Chưa có ai mượn</td>
                 </tr>
                 <tr th:each="borrow, iterStat : ${borrows}">
                     <td th:text="${iterStat.index + 1}">1</td>
-                    <td th:text="${borrow.title}">Title</td>
-            <td th:text="${borrow.user.name}">User</td>
+                    <td th:text="${borrow.title}">Ngày mượn</td>
+            <td th:text="${borrow.user.name}">Thành viên mượn</td>
 
-            <td th:text="${borrow.book.title}">Book</td>
+            <td th:text="${borrow.book.title}">Sách</td>
             <td>
-                <a th:href="@{/borrows/edit/{id}(id=${borrow.id})}">Edit</a>
-                <a th:href="@{/borrows/delete/{id}(id=${borrow.id})}">Delete</a>
+                <a th:href="@{/borrows/edit/{id}(id=${borrow.id})}">Sửa</a>|
+                <a th:href="@{/borrows/delete/{id}(id=${borrow.id})}">Xóa</a>
             </td>
                 </tr>
             </tbody>
